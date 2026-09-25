@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -35,15 +36,22 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2">
                 <span>📍</span>
-                <span>г. Москва, ул. Мебельная, д. 15</span>
+                <span>г. Воронеж, ул. Донбасская, д. 23</span>
               </li>
               <li className="flex items-center gap-2">
                 <span>📞</span>
-                <a href="tel:+74951234567" className="hover:text-amber-500 transition-colors">+7 (495) 123-45-67</a>
+                <a href="tel:+74951234567" className="hover:text-amber-500 transition-colors">+7 (952) 951-38-41</a>
+                
+               
+              </li> 
+                    
+              <li className="flex item-center gap-2"> 
+                <span>📞</span>
+                  <a href="tel:+74951234567" className="hover:text-amber-500 transition-colors">+7 (473) 222-08-41</a>
               </li>
               <li className="flex items-center gap-2">
                 <span>✉️</span>
-                <a href="mailto:info@fiesta-store.ru" className="hover:text-amber-500 transition-colors">info@fiesta-store.ru</a>
+                <a href="mailto:info@fiesta-store.ru" className="hover:text-amber-500 transition-colors">mebel-fiesta36@mail.ru</a>
               </li>
             </ul>
           </div>
@@ -52,14 +60,36 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold text-white mb-4">Мы в соцсетях</h4>
             <div className="flex gap-4">
-              <a href="https://t.me/fiestastore" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-amber-600 transition-colors">
-                <span className="text-xl">✈️</span>
+              <a href="https://vk.ru/club172448504" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full transition-colors">
+               
+                <Image
+                    src='/images/social/vk-icon-circle.png'
+                    alt='Вконтакте'
+                   width={48}
+                   height={48}
+                    className="hover:scale-110 transition-transform" 
+                />
+              
               </a>
-              <a href="https://vk.com/fiestastore" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-amber-600 transition-colors">
-                <span className="text-xl">💬</span>
+              <a href="https://wa.me/74732220841" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full transition-colors">
+                <Image
+                src='/images/social/whatsApp-icon.png'
+                alt='WhatsApp'
+                width={48}
+                height={48}
+                className='hover:scale-110 transition-transform'
+                
+                />
               </a>
-              <a href="https://instagram.com/fiestastore" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-amber-600 transition-colors">
-                <span className="text-xl">📷</span>
+              <a href="max.ru/u/79204550488" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full transition-colors">
+                 <Image
+                src='/images/social/MAX-48x48.png'
+                alt='Max'
+                width={48}
+                height={48}
+                className='hover:scale-110 transition-transform'
+                
+                />
               </a>
             </div>
           </div>

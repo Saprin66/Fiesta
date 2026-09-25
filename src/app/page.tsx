@@ -47,38 +47,102 @@ export default function Page() {
       </section>
 
       {/* 2. КАТЕГОРИИ */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
-            Популярные категории
-          </h2>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {[
-              { name: 'Диваны', icon: '🛋️', href: '/catalog' },
-              { name: 'Кровати', icon: '🛏️', href: '/catalog' },
-              { name: 'Кухни', icon: '🍳', href: '/catalog' },
-              { name: 'Шкафы-купе', icon: '🚪', href: '/catalog' },
-              { name: 'Прихожие', icon: '🏠', href: '/catalog' },
-              { name: 'Гардероб', icon: '👔', href: '/catalog' },
-              { name: 'Детские', icon: '🧸', href: '/catalog' },
-              { name: 'Для бизнеса', icon: '💼', href: '/catalog' },
-            ].map((category) => (
-              <Link 
-                key={category.name} 
-                href={category.href}
-                className="group flex flex-col items-center p-6 bg-gray-50 rounded-2xl hover:bg-amber-50 hover:shadow-md transition-all duration-300 border border-gray-100"
-              >
-                <span className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {category.icon}
-                </span>
-                <span className="text-lg font-semibold text-gray-900 group-hover:text-amber-700">
-                  {category.name}
-                </span>
-              </Link>
-            ))}
+    {/* ПОПУЛЯРНЫЕ КАТЕГОРИИ */}
+<section className="py-16 md:py-20 bg-white">
+  <div className="max-w-7xl mx-auto px-4">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Популярные категории
+      </h2>
+      <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        Выберите мебель для любой комнаты — от уютной гостиной до функционального офиса
+      </p>
+    </div>
+
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+      {[
+        { 
+          name: 'Диваны', 
+          image: '/images/categories/divan-scandi.webp',
+          count: '50+ моделей',
+          href: '/catalog'
+        },
+        { 
+          name: 'Кровати', 
+          image: '/images/categories/krovati.webp',
+          count: '30+ моделей',
+          href: '/catalog'
+        },
+        { 
+          name: 'Кухни', 
+          image: '/images/categories/kitchen.jpg',
+          count: '15 решений',
+          href: '/catalog'
+        },
+        { 
+          name: 'Шкафы-купе', 
+          image: '/images/categories/kupe.jpg',
+          count: '40+ вариантов',
+          href: '/catalog'
+        },
+        { 
+          name: 'Прихожие', 
+          image: '/images/categories/prihoshie.jpg',
+          count: '20+ комплектов',
+          href: '/catalog'
+        },
+        { 
+          name: 'Гардероб', 
+          image: '/images/categories/garderob.jpg',
+          count: '25+ систем',
+          href: '/catalog'
+        },
+        { 
+          name: 'Детские', 
+          image: '/images/categories/kids.webp',
+          count: '35+ моделей',
+          href: '/catalog'
+        },
+        { 
+          name: 'Для бизнеса', 
+          image: '/images/categories/business.webp',
+          count: '25+ позиций',
+          href: '/catalog'
+        },
+      ].map((category) => (
+        <Link 
+          key={category.name}
+          href={category.href}
+          className="group relative overflow-hidden rounded-2xl aspect-[4/3] bg-gray-100"
+        >
+          {/* Фоновая картинка */}
+          <Image
+            src={category.image}
+            alt={category.name}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+
+          {/* Градиентный оверлей */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+
+          {/* Контент */}
+          <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-6">
+            <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
+              {category.name}
+            </h3>
+            <p className="text-sm text-white/90 font-medium">
+              {category.count}
+            </p>
           </div>
-        </div>
-      </section>
+
+          {/* Hover-эффект: стрелка */}
+      
+        </Link>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* 3. ХИТЫ ПРОДАЖ */}
       <section className="py-16 md:py-24 bg-gray-50">
@@ -126,15 +190,17 @@ export default function Page() {
                 Доставим и соберем мебель в удобное для вас время. Бережно и аккуратно.
               </p>
             </div>
+
             <div className="text-center p-6">
               <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-3xl">🛡️</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Гарантия 3 года</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Гарантия 24 месяца</h3>
               <p className="text-gray-600">
                 Мы уверены в качестве нашей мебели и даем расширенную гарантию на все товары.
               </p>
             </div>
+
             <div className="text-center p-6">
               <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-3xl">💳</span>
@@ -144,6 +210,28 @@ export default function Page() {
                 Покупайте сейчас, платите потом. Оформите рассрочку без переплат за 5 минут.
               </p>
             </div>
+
+               <div className="text-center p-6">
+              <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-3xl">📦</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">бесплатная разработка дизайн-проекта</h3>
+              <p className="text-gray-600">
+                Мы бесплатно разработаем индивидуальный дизайн-проект и рассчитаем точную стоимость. Выберите любой удобный способ коммуникации.
+              </p>
+            </div>
+
+                <div className="text-center p-6">
+              <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-3xl">🏭</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">собственное автоматизированное производство</h3>
+              <p className="text-gray-600">
+                Мы не зависим от посредников и полностью контролируем каждый этап создания вашего продукта.
+              </p>
+            </div>
+
+
           </div>
         </div>
       </section>

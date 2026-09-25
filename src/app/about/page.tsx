@@ -16,38 +16,42 @@ export default function AboutPage() {
 
       {/* Наша история */}
       <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-6 text-gray-900">
-          Наша история
-        </h2>
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <p className="text-lg text-gray-700 mb-4">
-              Fiesta Store начался с простой идеи: каждый человек заслуживает 
-              жить в красивом и комфортном пространстве. В 2015 году мы открыли 
-              свой первый шоурум, и с тех пор помогли более чем 10 000 семьям 
-              обставить свои дома.
-            </p>
-            <p className="text-lg text-gray-700 mb-4">
-              Мы работаем напрямую с лучшими производителями мебели из России, 
-              Италии и Скандинавии. Это позволяет нам предлагать уникальные 
-              модели по честным ценам.
-            </p>
-            <p className="text-lg text-gray-700">
-              Наша команда — это дизайнеры интерьера, технологи и просто люди, 
-              которые любят красивую мебель. Мы знаем о каждом диване, каждом 
-              столе и каждом стуле всё.
-            </p>
-          </div>
-      <div className="rounded-2xl h-[400] w-[260] overflow-hidden relative self-center justity-self-center">
-  <Image 
-    src="/yandexMesto.png" 
-    alt="Лучшее место по мнению Яндекс"
-    fill
-    className="object-cover"
-  />
-</div>
-        </div>
-      </section>
+  <h2 className="text-3xl font-bold mb-6 text-gray-900">
+    Наша история
+  </h2>
+  <div className="grid md:grid-cols-2 gap-8 items-center">
+    <div>
+      <p className="text-lg text-gray-700 mb-4">
+        Fiesta Store начался с простой идеи: каждый человек заслуживает 
+        жить в красивом и комфортном пространстве. В 2015 году мы открыли 
+        свой первый шоурум, и с тех пор помогли более чем 10 000 семьям 
+        обставить свои дома.
+      </p>
+      <p className="text-lg text-gray-700 mb-4">
+        Мы работаем напрямую с лучшими производителями мебели из России, 
+        Италии и Скандинавии. Это позволяет нам предлагать уникальные 
+        модели по честным ценам.
+      </p>
+      <p className="text-lg text-gray-700">
+        Наша команда — это дизайнеры интерьера, технологи и просто люди, 
+        которые любят красивую мебель. Мы знаем о каждом диване, каждом 
+        столе и каждом стуле всё.
+      </p>
+    </div>
+
+    {/* Картинка по центру */}
+    <div className="flex justify-center items-center">
+      <div className="relative w-[260px] h-[400px] rounded-2xl overflow-hidden bg-gray-100">
+        <Image 
+          src="/yandexMesto.png" 
+          alt="Лучшее место по мнению Яндекс"
+          fill
+          className="object-cover"
+        />
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Наши ценности */}
       <section className="mb-16">
