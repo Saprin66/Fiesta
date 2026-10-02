@@ -81,7 +81,7 @@ export default function Footer() {
                 
                 />
               </a>
-              <a href="max.ru/u/79204550488" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full transition-colors">
+              <a href="https://web.max.ru/530992779" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full transition-colors">
                  <Image
                 src='/images/social/MAX-48x48.png'
                 alt='Max'

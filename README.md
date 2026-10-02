@@ -185,12 +185,11 @@ fiesta-store/
 
 ## 👤 Автор
 
-**[Ваше Имя]**  
+**[Saprin Alexey]**  
 Frontend Developer
 
-- 📧 Email: your.email@example.com
-- 💼 LinkedIn: [linkedin.com/in/your-profile](https://linkedin.com)
-- 💻 GitHub: [github.com/your-username](https://github.com)
+- 📧 Email: zopo1234@list.ru
+  -✈️Telegram: @fuf4ny
 
 ---
 
