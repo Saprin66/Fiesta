@@ -1,77 +1,77 @@
-'use client'; // Обязательно: этот компонент будет реагировать на клики
+'use client';
 
-import Image from 'next/image';
-import { useState } from 'react';
+import { Camera, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState, type ReactNode } from 'react';
+import { SmartImage } from '@/components/ui/SmartImage';
+import { cn } from '@/lib/cn';
 
-interface ProductGalleryProps {
+export default function ProductGallery({
+  images,
+  productName,
+  badges,
+}: {
   images: string[];
   productName: string;
-  discount?: number;
-  isNew?: boolean;
-}
+  badges?: ReactNode;
+}) {
+  const [active, setActive] = useState(0);
 
-export default function ProductGallery({ images, productName, discount, isNew }: ProductGalleryProps) {
-  // Состояние: индекс текущей активной картинки (по умолчанию 0)
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  // Защита от пустого массива картинок
-  if (!images || images.length === 0) {
+  if (images.length === 0) {
     return (
-      <div className="relative h-96 md:h-[500px] w-full rounded-2xl bg-gray-100 flex items-center justify-center mb-4">
-        <span className="text-6xl text-gray-300">📷</span>
+      <div className="flex aspect-square items-center justify-center rounded-3xl bg-gray-100 text-gray-300">
+        <Camera size={64} strokeWidth={1.5} />
       </div>
     );
   }
 
+  const go = (delta: number) => setActive((i) => (i + delta + images.length) % images.length);
+
   return (
-    <div>
-      {/* Главное изображение */}
-      <div className="relative h-96 md:h-[500px] w-full rounded-2xl overflow-hidden bg-gray-100 mb-4 group">
-        <Image 
-          src={images[activeIndex]} 
-          alt={`${productName} - фото ${activeIndex + 1}`}
+    <div className="lg:sticky lg:top-28">
+      <div className="group relative mb-4 aspect-square overflow-hidden rounded-3xl bg-gray-100">
+        <SmartImage
+          key={images[active]}
+          src={images[active]}
+          alt={`${productName}, фото ${active + 1}`}
           fill
-          className="object-cover transition-opacity duration-300 group-hover:scale-105"
-          priority={activeIndex === 0} // Загружаем сразу только первую картинку
+          priority={active === 0}
+          sizes="(min-width: 1024px) 50vw, 100vw"
+          className="object-cover"
         />
-        
-        {/* Бейджи (показываем только на главной картинке) */}
-        {activeIndex === 0 && (
+        {badges && <div className="absolute left-4 top-4 flex flex-col items-start gap-2">{badges}</div>}
+        {images.length > 1 && (
           <>
-            {discount && discount > 0 && (
-              <span className="absolute top-4 left-4 bg-red-500 text-white text-sm font-bold px-3 py-1.5 rounded-lg shadow-md">
-                -{discount}%
-              </span>
-            )}
-            {isNew && (
-              <span className="absolute top-4 right-4 bg-green-500 text-white text-sm font-bold px-3 py-1.5 rounded-lg shadow-md">
-                Новинка
-              </span>
-            )}
+            <button
+              onClick={() => go(-1)}
+              className="absolute left-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 opacity-0 shadow-md transition-opacity hover:bg-white group-hover:opacity-100"
+              aria-label="Предыдущее фото"
+            >
+              <ChevronLeft size={22} />
+            </button>
+            <button
+              onClick={() => go(1)}
+              className="absolute right-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 opacity-0 shadow-md transition-opacity hover:bg-white group-hover:opacity-100"
+              aria-label="Следующее фото"
+            >
+              <ChevronRight size={22} />
+            </button>
           </>
         )}
       </div>
 
-      {/* Миниатюры */}
       {images.length > 1 && (
-        <div className="grid grid-cols-4 gap-3">
-          {images.map((img, index) => (
+        <div className="grid grid-cols-5 gap-3">
+          {images.map((img, i) => (
             <button
-              key={index}
-              onClick={() => setActiveIndex(index)}
-              className={`relative h-20 md:h-24 rounded-lg overflow-hidden border-2 transition-all duration-200 bg-gray-100 ${
-                activeIndex === index
-                  ? 'border-amber-600 ring-2 ring-amber-600/20 scale-[1.02]'
-                  : 'border-transparent hover:border-amber-300 hover:scale-[1.02]'
-              }`}
-              aria-label={`Показать фото ${index + 1}`}
+              key={img}
+              onClick={() => setActive(i)}
+              className={cn(
+                'relative aspect-square overflow-hidden rounded-xl border-2 bg-gray-100 transition-all duration-200',
+                active === i ? 'border-primary' : 'border-transparent opacity-70 hover:opacity-100',
+              )}
+              aria-label={`Показать фото ${i + 1}`}
             >
-              <Image 
-                src={img} 
-                alt={`Миниатюра ${index + 1}`}
-                fill
-                className="object-cover"
-              />
+              <SmartImage src={img} alt="" fill sizes="96px" className="object-cover" />
             </button>
           ))}
         </div>
